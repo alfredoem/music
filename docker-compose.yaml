@@ -1,0 +1,36 @@
+version: "3"
+services:
+
+  web:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/app
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./logs/nginx/:/var/log/nginx/
+    depends_on:
+      - mysql
+    links:
+      - php
+
+  php:
+    image: docker/base
+    build:
+      context: ./docker/base
+
+  mysql:
+    image: mysql:5.5
+    environment:
+      MYSQL_DATABASE: db_music
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: root
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/mysql/sqldata:/var/lib/mysql
+      - ./docker/mysql/sql:/docker-entrypoint-initdb.d
+    command: mysqld --sql_mode=""
+
+volumes:
+  db-data:
