@@ -1,5 +1,6 @@
 parameters:
-  data_base_host: 127.0.0.1
-  data_base_port: 3036
-  data_base_user: root
-  data_base_password: 1234
+  database_host: mysql
+  database_port: 3306
+  database_name: db_music
+  database_username: root
+  database_password: 1234

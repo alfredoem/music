@@ -9,4 +9,6 @@ RUN apt-get update \
     && apt-get install -y libyaml-dev \
     && pecl install yaml
 
+RUN docker-php-ext-install mysqli
+
 COPY ./php.ini-development /usr/local/etc/php/php.ini

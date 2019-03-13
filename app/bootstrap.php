@@ -1,13 +1,22 @@
 <?php
+require __DIR__ . '/vendor/autoload.php';
 
-phpinfo();
-exit;
+use App\Music\Application\Artist\ArtistListService;
 
 $config = yaml_parse_file('./config/parameters.yaml');
 
+$mysqli = new mysqli(
+    $config['parameters']['database_host'],
+    $config['parameters']['database_username'],
+    $config['parameters']['database_password'],
+    $config['parameters']['database_name'],
+    $config['parameters']['database_port']
+);
 
-var_dump($config);exit;
+if ($mysqli->connect_errno) {
+    echo "Falló la conexión a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
 
-//$con = new mysqli(
-//
-//);
+$artistService = new ArtistListService();
+
+$artists = $artistService->getAll();

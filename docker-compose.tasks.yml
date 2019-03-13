@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+    cli:
+      image: composer
+      volumes:
+        - ./app/:/app
+

@@ -1,3 +1,4 @@
+<?php require_once(__DIR__ . '/bootstrap.php') ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,6 +11,13 @@
 <body>
 
 <h1>The heaven is colds</h1>
+
+<h2>Artists</h2>
+<ul>
+    <?php foreach ($artists as $item): ?>
+    <li><?php echo $item['id'] ?> - <?php echo $item['name'] ?></li>
+    <?php endforeach; ?>
+</ul>
 
 </body>
 </html>
