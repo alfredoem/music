@@ -2,6 +2,8 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use App\Music\Application\Artist\ArtistListService;
+use App\Music\Infrastructure\Repository\DbArtistRepository;
+use App\Music\Presentation\Artist\ArtistListPresentation;
 
 $config = yaml_parse_file('./config/parameters.yaml');
 
@@ -17,6 +19,8 @@ if ($mysqli->connect_errno) {
     echo "Falló la conexión a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 
-$artistService = new ArtistListService();
 
-$artists = $artistService->getAll();
+$artistRepository = new DbArtistRepository($mysqli);
+$artistService = new ArtistListService($artistRepository);
+
+$artists = ArtistListPresentation::read($artistService->getAll());

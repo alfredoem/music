@@ -2,17 +2,20 @@
 
 namespace App\Music\Application\Artist;
 
+use App\Music\Domain\ArtistRepository;
+
 class ArtistListService
 {
+    private $artistRepository;
+
+    public function __construct(ArtistRepository $artistRepository)
+    {
+        $this->artistRepository = $artistRepository;
+    }
 
     public function getAll()
     {
-        return [
-            [
-                'id' => 'fgfg4545',
-                'name' => 'Europe'
-            ]
-        ];
+        return $this->artistRepository->all();
     }
 
 }

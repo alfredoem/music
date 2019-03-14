@@ -14,15 +14,30 @@ class Artist
     protected $name;
     protected $active;
 
-    public static function construct($id, $name)
+    public static function create($id, $name, $active = true)
     {
         $object = new self();
 
         $object->id = $id;
         $object->name = $name;
-        $object->active = true;
+        $object->active = $active;
 
         return $object;
+    }
+
+    public function id()
+    {
+        return $this->id;
+    }
+
+    public function name()
+    {
+        return $this->name;
+    }
+
+    public function active()
+    {
+        return $this->active;
     }
 
     public function deactivate()
