@@ -1,0 +1,15 @@
+{
+  "name": "cucumberspec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "script": {
+    "test": "./node_modules/.bin/cucumber-js"
+  },
+  "keywords": [],
+  "author": "alfredoem",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber": "^5.1.0"
+  }
+}

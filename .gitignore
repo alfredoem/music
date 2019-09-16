@@ -3,3 +3,4 @@ logs/
 .idea/
 app/vendor/
 app/composer.lock
+cucumberspec/node_modules/
